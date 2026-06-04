@@ -1,0 +1,18 @@
+{
+  "id": "ProductiveInclusionMainMenu",
+  "name": "Inclusion productive",
+  "icon": "GroupWork",
+  "position": 50,
+  "submenus": [
+    {
+      "id": "productiveInclusion.sereGroups",
+      "position": 1,
+      "icon": "GroupWork"
+    },
+    {
+      "id": "productiveInclusion.members",
+      "position": 2,
+      "icon": "People"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+export const MODULE_NAME = 'productiveInclusion';
+
+export const RIGHT_SERE_GROUP_SEARCH = 122001;
+export const RIGHT_SERE_GROUP_CREATE = 122002;
+export const RIGHT_SERE_GROUP_UPDATE = 122003;
+export const RIGHT_SERE_GROUP_DELETE = 122004;
+export const RIGHT_SERE_MEMBER_SEARCH = 122005;
+export const RIGHT_SERE_ACTIVITY_SEARCH = 122006;
+export const RIGHT_SERE_ACTIVITY_CREATE = 122007;
+export const RIGHT_SERE_ACTIVITY_UPDATE = 122008;
+export const RIGHT_SERE_ACTIVITY_DELETE = 122009;
+
+export const PRODUCTIVE_INCLUSION_MAIN_MENU_CONTRIBUTION_KEY = 'productiveInclusion.MainMenu';
+
+export const ROUTE_SERE_GROUPS = 'productive-inclusion/sere-groups';
+export const ROUTE_SERE_GROUP = 'productive-inclusion/sere-groups/group';
+export const ROUTE_SERE_MEMBERS = 'productive-inclusion/members';
+
+export const MEMBER_STATUS_ACTIVE = 'ACTIVE';
+export const MEMBER_STATUS_INACTIVE = 'INACTIVE';
+export const MEMBER_STATUS_PENDING = 'PENDING';
+export const MEMBER_STATUS_SUSPENDED = 'SUSPENDED';
+
+export const SERE_MEMBER_STATUSES = [
+  MEMBER_STATUS_ACTIVE,
+  MEMBER_STATUS_INACTIVE,
+  MEMBER_STATUS_PENDING,
+  MEMBER_STATUS_SUSPENDED,
+];
+
+export const DEFAULT_PAGE_SIZE = 10;
+export const SERE_MEMBERS_DEFAULT_PAGE_SIZE = 20;
+export const SERE_GROUP_MEMBERS_DEFAULT_PAGE_SIZE = 50;
+export const ROWS_PER_PAGE_OPTIONS = [10, 20, 50, 100];
+/** Taille max alignée sur l’API sereActivity (first) côté backend */
+export const SERE_ACTIVITY_DEFAULT_PAGE_SIZE = 50;
+export const SERE_ACTIVITY_ROWS_PER_PAGE_OPTIONS = [10, 20, 50];
+
+export const DATE_TO_DATETIME_SUFFIX = 'T00:00:00';
+export const DATE_END_OF_DAY_SUFFIX = 'T23:59:59';
+export const GREATER_OR_EQUAL_LOOKUP = 'Gte';
+export const LESS_OR_EQUAL_LOOKUP = 'Lte';
+export const CONTAINS_LOOKUP = 'Icontains';
+
+export const ACTIVITY_STATUS_PLANNED = 'PLANNED';
+export const ACTIVITY_STATUS_IN_PROGRESS = 'IN_PROGRESS';
+export const ACTIVITY_STATUS_COMPLETED = 'COMPLETED';
+export const ACTIVITY_STATUS_CANCELLED = 'CANCELLED';
+
+export const ACTIVITY_STATUSES = [
+  ACTIVITY_STATUS_PLANNED,
+  ACTIVITY_STATUS_IN_PROGRESS,
+  ACTIVITY_STATUS_COMPLETED,
+  ACTIVITY_STATUS_CANCELLED,
+];
