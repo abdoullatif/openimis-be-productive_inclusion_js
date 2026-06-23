@@ -118,7 +118,16 @@ var messagesEn = {
 	"productiveInclusion.sereActivity.dialog.createTitle": "New activity",
 	"productiveInclusion.sereActivity.dialog.editTitle": "Edit activity",
 	"productiveInclusion.sereActivity.dialog.save": "Save",
-	"productiveInclusion.sereActivity.dialog.cancel": "Cancel"
+	"productiveInclusion.sereActivity.dialog.cancel": "Cancel",
+	"productiveInclusion.right.sereGroupSearch": "Productive inclusion: search SERE groups",
+	"productiveInclusion.right.sereGroupCreate": "Productive inclusion: create SERE group",
+	"productiveInclusion.right.sereGroupUpdate": "Productive inclusion: update SERE group",
+	"productiveInclusion.right.sereGroupDelete": "Productive inclusion: delete SERE group",
+	"productiveInclusion.right.sereMemberSearch": "Productive inclusion: search members",
+	"productiveInclusion.right.sereActivitySearch": "Productive inclusion: search activities",
+	"productiveInclusion.right.sereActivityCreate": "Productive inclusion: create activity",
+	"productiveInclusion.right.sereActivityUpdate": "Productive inclusion: update activity",
+	"productiveInclusion.right.sereActivityDelete": "Productive inclusion: delete activity"
 };
 
 var messagesFr = {
@@ -223,7 +232,16 @@ var messagesFr = {
 	"productiveInclusion.sereActivity.dialog.createTitle": "Nouvelle activité",
 	"productiveInclusion.sereActivity.dialog.editTitle": "Modifier l'activité",
 	"productiveInclusion.sereActivity.dialog.save": "Enregistrer",
-	"productiveInclusion.sereActivity.dialog.cancel": "Annuler"
+	"productiveInclusion.sereActivity.dialog.cancel": "Annuler",
+	"productiveInclusion.right.sereGroupSearch": "Inclusion productive : consulter les SERE",
+	"productiveInclusion.right.sereGroupCreate": "Inclusion productive : créer un SERE",
+	"productiveInclusion.right.sereGroupUpdate": "Inclusion productive : modifier un SERE",
+	"productiveInclusion.right.sereGroupDelete": "Inclusion productive : supprimer un SERE",
+	"productiveInclusion.right.sereMemberSearch": "Inclusion productive : consulter les membres",
+	"productiveInclusion.right.sereActivitySearch": "Inclusion productive : consulter les activités",
+	"productiveInclusion.right.sereActivityCreate": "Inclusion productive : créer une activité",
+	"productiveInclusion.right.sereActivityUpdate": "Inclusion productive : modifier une activité",
+	"productiveInclusion.right.sereActivityDelete": "Inclusion productive : supprimer une activité"
 };
 
 const REQUEST = actionType => "".concat(actionType, "_REQ");
@@ -523,7 +541,7 @@ const SERE_GROUP_PROJECTION = () => ['id', 'importCode', 'name', 'locality', 'lo
 /** Onglet membres fiche SERE — groupId obligatoire, pas de sereGroup imbriqué. */
 const SERE_MEMBER_GROUP_PROJECTION = () => ['uuid', 'lastName', 'firstName', 'phone', 'role', 'beneficiaryType', 'codeMenage'];
 
-/** Liste globale Membres — sans groupId (droit 122005). */
+/** Liste globale Membres — sans groupId (droit 124005). */
 const SERE_MEMBER_LIST_PROJECTION = () => ['uuid', 'codeMenage', 'lastName', 'firstName', 'phone', 'role', 'beneficiaryType', 'status', 'statusDisplay', 'presenceCount', 'sereName', 'sereImportCode', 'prefectureName', 'subPrefectureName', 'districtName', 'sereGroup { id uuid name importCode locationHierarchy }'];
 
 /** Aligné sur sereActivity(groupId, first) — edges.node */
@@ -631,12 +649,17 @@ function deleteSereActivity(activityId, clientMutationLabel) {
 }
 
 const MODULE_NAME = 'productiveInclusion';
-const RIGHT_SERE_GROUP_SEARCH = 122001;
-const RIGHT_SERE_MEMBER_SEARCH = 122005;
-const RIGHT_SERE_ACTIVITY_SEARCH = 122006;
-const RIGHT_SERE_ACTIVITY_CREATE = 122007;
-const RIGHT_SERE_ACTIVITY_UPDATE = 122008;
-const RIGHT_SERE_ACTIVITY_DELETE = 122009;
+
+// Inclusion productive (SERE) — plage 124xxx (NE PAS utiliser 122001-122009 = core rôles)
+const RIGHT_SERE_GROUP_SEARCH = 124001;
+const RIGHT_SERE_GROUP_CREATE = 124002;
+const RIGHT_SERE_GROUP_UPDATE = 124003;
+const RIGHT_SERE_GROUP_DELETE = 124004;
+const RIGHT_SERE_MEMBER_SEARCH = 124005;
+const RIGHT_SERE_ACTIVITY_SEARCH = 124006;
+const RIGHT_SERE_ACTIVITY_CREATE = 124007;
+const RIGHT_SERE_ACTIVITY_UPDATE = 124008;
+const RIGHT_SERE_ACTIVITY_DELETE = 124009;
 const ROUTE_SERE_GROUPS = 'productive-inclusion/sere-groups';
 const ROUTE_SERE_GROUP = 'productive-inclusion/sere-groups/group';
 const ROUTE_SERE_MEMBERS = 'productive-inclusion/members';
@@ -2062,6 +2085,36 @@ var ProductiveInclusionMainMenu$1 = injectIntl(withModulesManager(connect(mapSta
 
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+
+/** Libellés écran Administration → Rôles (IDs 124001–124009, backend migration 0008). */
+const PRODUCTIVE_INCLUSION_MODULE_RIGHTS = [{
+  id: RIGHT_SERE_GROUP_SEARCH,
+  name: 'productiveInclusion.right.sereGroupSearch'
+}, {
+  id: RIGHT_SERE_GROUP_CREATE,
+  name: 'productiveInclusion.right.sereGroupCreate'
+}, {
+  id: RIGHT_SERE_GROUP_UPDATE,
+  name: 'productiveInclusion.right.sereGroupUpdate'
+}, {
+  id: RIGHT_SERE_GROUP_DELETE,
+  name: 'productiveInclusion.right.sereGroupDelete'
+}, {
+  id: RIGHT_SERE_MEMBER_SEARCH,
+  name: 'productiveInclusion.right.sereMemberSearch'
+}, {
+  id: RIGHT_SERE_ACTIVITY_SEARCH,
+  name: 'productiveInclusion.right.sereActivitySearch'
+}, {
+  id: RIGHT_SERE_ACTIVITY_CREATE,
+  name: 'productiveInclusion.right.sereActivityCreate'
+}, {
+  id: RIGHT_SERE_ACTIVITY_UPDATE,
+  name: 'productiveInclusion.right.sereActivityUpdate'
+}, {
+  id: RIGHT_SERE_ACTIVITY_DELETE,
+  name: 'productiveInclusion.right.sereActivityDelete'
+}];
 const DEFAULT_CONFIG = {
   translations: [{
     key: 'en',
@@ -2097,6 +2150,9 @@ const DEFAULT_CONFIG = {
   }, {
     key: 'productiveInclusion.route.sereMembers',
     ref: ROUTE_SERE_MEMBERS
+  }, {
+    key: 'productiveInclusion.rights',
+    ref: PRODUCTIVE_INCLUSION_MODULE_RIGHTS
   }]
 };
 const ProductiveInclusionModule = function () {

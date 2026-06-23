@@ -100,5 +100,14 @@
   "productiveInclusion.sereActivity.dialog.createTitle": "Nouvelle activité",
   "productiveInclusion.sereActivity.dialog.editTitle": "Modifier l'activité",
   "productiveInclusion.sereActivity.dialog.save": "Enregistrer",
-  "productiveInclusion.sereActivity.dialog.cancel": "Annuler"
+  "productiveInclusion.sereActivity.dialog.cancel": "Annuler",
+  "productiveInclusion.right.sereGroupSearch": "Inclusion productive : consulter les SERE",
+  "productiveInclusion.right.sereGroupCreate": "Inclusion productive : créer un SERE",
+  "productiveInclusion.right.sereGroupUpdate": "Inclusion productive : modifier un SERE",
+  "productiveInclusion.right.sereGroupDelete": "Inclusion productive : supprimer un SERE",
+  "productiveInclusion.right.sereMemberSearch": "Inclusion productive : consulter les membres",
+  "productiveInclusion.right.sereActivitySearch": "Inclusion productive : consulter les activités",
+  "productiveInclusion.right.sereActivityCreate": "Inclusion productive : créer une activité",
+  "productiveInclusion.right.sereActivityUpdate": "Inclusion productive : modifier une activité",
+  "productiveInclusion.right.sereActivityDelete": "Inclusion productive : supprimer une activité"
 }

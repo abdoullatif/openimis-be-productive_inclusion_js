@@ -32,7 +32,7 @@ const SERE_MEMBER_GROUP_PROJECTION = () => [
   'codeMenage',
 ];
 
-/** Liste globale Membres — sans groupId (droit 122005). */
+/** Liste globale Membres — sans groupId (droit 124005). */
 const SERE_MEMBER_LIST_PROJECTION = () => [
   'uuid',
   'codeMenage',
