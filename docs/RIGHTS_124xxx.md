@@ -30,8 +30,3 @@ Constantes : `src/constants.js` → `RIGHT_SERE_*` et `PRODUCTIVE_INCLUSION_RIGH
 | Supprimer activité | 124009 |
 
 ## Administration → Rôles
-
-Après migration backend, pour chaque rôle métier SERE :
-
-1. Cocher **124001–124009** (Inclusion productive)
-2. Décocher **122001–122006** s’ils avaient été cochés par erreur (accès écran Rôles core)
