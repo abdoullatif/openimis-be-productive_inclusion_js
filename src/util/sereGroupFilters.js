@@ -1,11 +1,12 @@
-/** Retire les paramètres de pagination / tri pour réutiliser les filtres métier côté récap. */
+/** Retire pagination / tri / isDeleted (non exposé sur sereGroupSummary). */
 export function stripSereGroupPaginationParams(params) {
   if (!Array.isArray(params)) return [];
   return params.filter(
     (p) => !/^first:/.test(p)
       && !/^after:/.test(p)
       && !/^before:/.test(p)
-      && !/^orderBy:/.test(p),
+      && !/^orderBy:/.test(p)
+      && !/^isDeleted:/.test(p),
   );
 }
 

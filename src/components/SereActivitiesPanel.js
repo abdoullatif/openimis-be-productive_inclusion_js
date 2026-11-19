@@ -64,6 +64,7 @@ function SereActivitiesPanel({
   const fetch = (params) => fetchSereActivities([`groupId: "${groupId}"`, ...params]);
 
   const filtersToQueryParams = (state) => [
+    'isDeleted: false',
     `first: ${Math.min(state.pageSize, 50)}`,
   ];
 

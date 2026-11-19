@@ -3,9 +3,9 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var _defineProperty = require('@babel/runtime/helpers/defineProperty');
+var React = require('react');
 var feCore = require('@openimis/fe-core');
 var _slicedToArray = require('@babel/runtime/helpers/slicedToArray');
-var React = require('react');
 var styles$5 = require('@material-ui/core/styles');
 var reactIntl = require('react-intl');
 var reactRedux = require('react-redux');
@@ -18,13 +18,14 @@ var AddIcon = require('@material-ui/icons/Add');
 var EditIcon = require('@material-ui/icons/Edit');
 var DeleteIcon = require('@material-ui/icons/Delete');
 var ChevronLeftIcon = require('@material-ui/icons/ChevronLeft');
+var lab = require('@material-ui/lab');
 var icons = require('@material-ui/icons');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
 var _defineProperty__default = /*#__PURE__*/_interopDefaultLegacy(_defineProperty);
-var _slicedToArray__default = /*#__PURE__*/_interopDefaultLegacy(_slicedToArray);
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
+var _slicedToArray__default = /*#__PURE__*/_interopDefaultLegacy(_slicedToArray);
 var VisibilityIcon__default = /*#__PURE__*/_interopDefaultLegacy(VisibilityIcon);
 var _extends__default = /*#__PURE__*/_interopDefaultLegacy(_extends);
 var AddIcon__default = /*#__PURE__*/_interopDefaultLegacy(AddIcon);
@@ -92,6 +93,38 @@ var messagesEn = {
 	"productiveInclusion.sereGroups.filter.dateUpdatedTo": "Updated until",
 	"productiveInclusion.sereGroups.view": "View",
 	"productiveInclusion.sereGroups.noRights": "You do not have permission to view SERE groups.",
+	"productiveInclusion.validatePresences.btn": "Validate presences",
+	"productiveInclusion.validatePresences.confirmTitle": "Validate presences?",
+	"productiveInclusion.validatePresences.confirmMessage": "This recalculates SERE statuses from thresholds, then creates a subsidy task to assign. The social protection scheme is updated only after the task is completed.",
+	"productiveInclusion.validatePresences.confirm": "Yes, create task",
+	"productiveInclusion.validatePresences.cancel": "Cancel",
+	"productiveInclusion.validatePresences.inProgress": "Creating task…",
+	"productiveInclusion.validatePresences.success": "Subsidy task created. Assign it in Task Management.",
+	"productiveInclusion.validatePresences.failed": "Failed to validate presences.",
+	"productiveInclusion.validatePresences.forbidden": "You do not have the right to validate presences (124010 required).",
+	"productiveInclusion.validatePresences.membersTotal": "SERE members",
+	"productiveInclusion.validatePresences.activeCount": "Active (eligible)",
+	"productiveInclusion.validatePresences.inactiveCount": "Inactive",
+	"productiveInclusion.validatePresences.statusUpdated": "SERE statuses updated",
+	"productiveInclusion.validatePresences.benefitPlan": "Scheme",
+	"productiveInclusion.validatePresences.taskId": "Task ID",
+	"productiveInclusion.validatePresences.taskHint": "In Task Management, assign then complete the task. Scheme sync applies only on completion.",
+	"productiveInclusion.validatePresences.ok": "OK",
+	"productiveInclusion.tasks.subvention.title": "Productive subsidy — presence validation",
+	"productiveInclusion.tasks.subvention.recapTitle": "Expected impact on completion",
+	"productiveInclusion.tasks.subvention.recapHint": "When the task is completed, the social protection scheme is synced from the SERE statuses below.",
+	"productiveInclusion.tasks.subvention.noData": "No recap data available for this task.",
+	"productiveInclusion.tasks.subvention.field.label": "Operation",
+	"productiveInclusion.tasks.subvention.field.benefitPlan": "Social protection scheme",
+	"productiveInclusion.tasks.subvention.field.thresholds": "Presence thresholds (min – max)",
+	"productiveInclusion.tasks.subvention.field.membersTotal": "SERE members (total)",
+	"productiveInclusion.tasks.subvention.field.activeCount": "Active beneficiaries (kept / reactivated)",
+	"productiveInclusion.tasks.subvention.field.toSuspendCount": "Beneficiaries that will be suspended",
+	"productiveInclusion.tasks.subvention.field.statusUpdated": "SERE statuses recalculated at creation",
+	"productiveInclusion.tasks.subvention.field.syncSocialProtection": "Scheme sync enabled",
+	"productiveInclusion.tasks.subvention.field.batchId": "Batch ID",
+	"productiveInclusion.tasks.subvention.yes": "Yes",
+	"productiveInclusion.tasks.subvention.no": "No",
 	"productiveInclusion.sereGroup.pageTitle": "SERE group {name}",
 	"productiveInclusion.sereGroup.infoSectionTitle": "SERE information",
 	"productiveInclusion.sereGroup.code": "Code",
@@ -143,7 +176,8 @@ var messagesEn = {
 	"productiveInclusion.right.sereActivitySearch": "Productive inclusion: search activities",
 	"productiveInclusion.right.sereActivityCreate": "Productive inclusion: create activity",
 	"productiveInclusion.right.sereActivityUpdate": "Productive inclusion: update activity",
-	"productiveInclusion.right.sereActivityDelete": "Productive inclusion: delete activity"
+	"productiveInclusion.right.sereActivityDelete": "Productive inclusion: delete activity",
+	"productiveInclusion.right.serePresenceValidate": "Productive inclusion: validate presences (subsidy task)"
 };
 
 var messagesFr = {
@@ -206,6 +240,38 @@ var messagesFr = {
 	"productiveInclusion.sereGroups.filter.dateUpdatedTo": "Mis à jour au",
 	"productiveInclusion.sereGroups.view": "Voir",
 	"productiveInclusion.sereGroups.noRights": "Vous n'avez pas les droits pour consulter les SERE.",
+	"productiveInclusion.validatePresences.btn": "Valider les présences",
+	"productiveInclusion.validatePresences.confirmTitle": "Valider les présences ?",
+	"productiveInclusion.validatePresences.confirmMessage": "Cette action recalcule les statuts SERE selon les seuils, puis crée une tâche « subvention » à assigner. Le régime social protection ne sera modifié qu’après complétion de la tâche.",
+	"productiveInclusion.validatePresences.confirm": "Oui, créer la tâche",
+	"productiveInclusion.validatePresences.cancel": "Annuler",
+	"productiveInclusion.validatePresences.inProgress": "Création de la tâche…",
+	"productiveInclusion.validatePresences.success": "Tâche subvention créée. Assignez-la dans Gestion des tâches.",
+	"productiveInclusion.validatePresences.failed": "Échec de la validation des présences.",
+	"productiveInclusion.validatePresences.forbidden": "Vous n'avez pas le droit de valider les présences (124010 requis).",
+	"productiveInclusion.validatePresences.membersTotal": "Membres SERE",
+	"productiveInclusion.validatePresences.activeCount": "Actifs (éligibles)",
+	"productiveInclusion.validatePresences.inactiveCount": "Inactifs",
+	"productiveInclusion.validatePresences.statusUpdated": "Statuts SERE mis à jour",
+	"productiveInclusion.validatePresences.benefitPlan": "Régime",
+	"productiveInclusion.validatePresences.taskId": "ID tâche",
+	"productiveInclusion.validatePresences.taskHint": "Dans Gestion des tâches, assignez puis validez la tâche. La sync du régime s’applique uniquement à la complétion.",
+	"productiveInclusion.validatePresences.ok": "OK",
+	"productiveInclusion.tasks.subvention.title": "Subvention productif — validation des présences",
+	"productiveInclusion.tasks.subvention.recapTitle": "Impact prévu à la validation",
+	"productiveInclusion.tasks.subvention.recapHint": "À la complétion de la tâche, le régime social protection est synchronisé selon les statuts SERE ci-dessous.",
+	"productiveInclusion.tasks.subvention.noData": "Aucune donnée de récapitulatif disponible pour cette tâche.",
+	"productiveInclusion.tasks.subvention.field.label": "Opération",
+	"productiveInclusion.tasks.subvention.field.benefitPlan": "Régime social protection",
+	"productiveInclusion.tasks.subvention.field.thresholds": "Seuils de présences (min – max)",
+	"productiveInclusion.tasks.subvention.field.membersTotal": "Membres SERE (total)",
+	"productiveInclusion.tasks.subvention.field.activeCount": "Bénéficiaires actifs (restent / réactivés)",
+	"productiveInclusion.tasks.subvention.field.toSuspendCount": "Bénéficiaires qui seront suspendus",
+	"productiveInclusion.tasks.subvention.field.statusUpdated": "Statuts SERE recalculés à la création",
+	"productiveInclusion.tasks.subvention.field.syncSocialProtection": "Sync régime activée",
+	"productiveInclusion.tasks.subvention.field.batchId": "ID lot",
+	"productiveInclusion.tasks.subvention.yes": "Oui",
+	"productiveInclusion.tasks.subvention.no": "Non",
 	"productiveInclusion.sereGroup.pageTitle": "SERE {name}",
 	"productiveInclusion.sereGroup.infoSectionTitle": "Information du SERE",
 	"productiveInclusion.sereGroup.code": "Code",
@@ -257,7 +323,8 @@ var messagesFr = {
 	"productiveInclusion.right.sereActivitySearch": "Inclusion productive : consulter les activités",
 	"productiveInclusion.right.sereActivityCreate": "Inclusion productive : créer une activité",
 	"productiveInclusion.right.sereActivityUpdate": "Inclusion productive : modifier une activité",
-	"productiveInclusion.right.sereActivityDelete": "Inclusion productive : supprimer une activité"
+	"productiveInclusion.right.sereActivityDelete": "Inclusion productive : supprimer une activité",
+	"productiveInclusion.right.serePresenceValidate": "Inclusion productive : valider les présences (tâche subvention)"
 };
 
 const REQUEST = actionType => "".concat(actionType, "_REQ");
@@ -316,8 +383,8 @@ function normalizePrefectureRows(raw) {
   }).filter(r => r.label && r.label !== '—');
 }
 
-function ownKeys$3(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function _objectSpread$3(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys$3(Object(t), !0).forEach(function (r) { _defineProperty__default["default"](e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys$3(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function ownKeys$4(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread$4(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys$4(Object(t), !0).forEach(function (r) { _defineProperty__default["default"](e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys$4(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 const ACTION_TYPE = {
   MUTATION: 'PRODUCTIVE_INCLUSION_MUTATION',
   SEARCH_SERE_GROUPS: 'PRODUCTIVE_INCLUSION_SEARCH_SERE_GROUPS',
@@ -371,18 +438,18 @@ function handleMutationSuccess(state, service, action) {
   var _action$payload;
   const gqlError = feCore.formatGraphQLError(action.payload);
   if (gqlError) {
-    return _objectSpread$3(_objectSpread$3({}, state), {}, {
+    return _objectSpread$4(_objectSpread$4({}, state), {}, {
       submittingMutation: false,
-      mutation: _objectSpread$3(_objectSpread$3({}, state.mutation), {}, {
+      mutation: _objectSpread$4(_objectSpread$4({}, state.mutation), {}, {
         error: gqlError
       })
     });
   }
   const response = (_action$payload = action.payload) === null || _action$payload === void 0 || (_action$payload = _action$payload.data) === null || _action$payload === void 0 ? void 0 : _action$payload[service];
   if (!response) {
-    return _objectSpread$3(_objectSpread$3({}, state), {}, {
+    return _objectSpread$4(_objectSpread$4({}, state), {}, {
       submittingMutation: false,
-      mutation: _objectSpread$3(_objectSpread$3({}, state.mutation), {}, {
+      mutation: _objectSpread$4(_objectSpread$4({}, state.mutation), {}, {
         error: {
           message: 'Empty mutation response',
           detail: service
@@ -398,13 +465,13 @@ function reducer() {
   let action = arguments.length > 1 ? arguments[1] : undefined;
   switch (action.type) {
     case REQUEST(ACTION_TYPE.SEARCH_SERE_GROUPS):
-      return _objectSpread$3(_objectSpread$3({}, state), {}, {
+      return _objectSpread$4(_objectSpread$4({}, state), {}, {
         fetchingSereGroups: true,
         fetchedSereGroups: false,
         errorSereGroups: null
       });
     case SUCCESS(ACTION_TYPE.SEARCH_SERE_GROUPS):
-      return _objectSpread$3(_objectSpread$3({}, state), {}, {
+      return _objectSpread$4(_objectSpread$4({}, state), {}, {
         fetchingSereGroups: false,
         fetchedSereGroups: true,
         sereGroups: feCore.parseData((_action$payload2 = action.payload) === null || _action$payload2 === void 0 || (_action$payload2 = _action$payload2.data) === null || _action$payload2 === void 0 ? void 0 : _action$payload2.sereGroup),
@@ -413,12 +480,12 @@ function reducer() {
         errorSereGroups: feCore.formatGraphQLError(action.payload)
       });
     case ERROR(ACTION_TYPE.SEARCH_SERE_GROUPS):
-      return _objectSpread$3(_objectSpread$3({}, state), {}, {
+      return _objectSpread$4(_objectSpread$4({}, state), {}, {
         fetchingSereGroups: false,
         errorSereGroups: feCore.formatServerError(action.payload)
       });
     case REQUEST(ACTION_TYPE.GET_SERE_GROUPS_SUMMARY):
-      return _objectSpread$3(_objectSpread$3({}, state), {}, {
+      return _objectSpread$4(_objectSpread$4({}, state), {}, {
         fetchingSereGroupsSummary: true,
         fetchedSereGroupsSummary: false,
         errorSereGroupsSummary: null
@@ -427,7 +494,7 @@ function reducer() {
       {
         var _action$payload5, _ref, _raw$totalGroups, _ref2, _raw$totalMembers, _raw$groupsByPrefectu;
         const raw = (_action$payload5 = action.payload) === null || _action$payload5 === void 0 || (_action$payload5 = _action$payload5.data) === null || _action$payload5 === void 0 ? void 0 : _action$payload5.sereGroupSummary;
-        return _objectSpread$3(_objectSpread$3({}, state), {}, {
+        return _objectSpread$4(_objectSpread$4({}, state), {}, {
           fetchingSereGroupsSummary: false,
           fetchedSereGroupsSummary: true,
           sereGroupsSummary: raw ? {
@@ -439,45 +506,45 @@ function reducer() {
         });
       }
     case ERROR(ACTION_TYPE.GET_SERE_GROUPS_SUMMARY):
-      return _objectSpread$3(_objectSpread$3({}, state), {}, {
+      return _objectSpread$4(_objectSpread$4({}, state), {}, {
         fetchingSereGroupsSummary: false,
         fetchedSereGroupsSummary: true,
         sereGroupsSummary: null,
         errorSereGroupsSummary: feCore.formatServerError(action.payload)
       });
     case REQUEST(ACTION_TYPE.GET_SERE_GROUP):
-      return _objectSpread$3(_objectSpread$3({}, state), {}, {
+      return _objectSpread$4(_objectSpread$4({}, state), {}, {
         fetchingSereGroup: true,
         fetchedSereGroup: false,
         errorSereGroup: null
       });
     case SUCCESS(ACTION_TYPE.GET_SERE_GROUP):
-      return _objectSpread$3(_objectSpread$3({}, state), {}, {
+      return _objectSpread$4(_objectSpread$4({}, state), {}, {
         fetchingSereGroup: false,
         fetchedSereGroup: true,
         sereGroup: (_parseData$ = (_parseData = feCore.parseData((_action$payload6 = action.payload) === null || _action$payload6 === void 0 || (_action$payload6 = _action$payload6.data) === null || _action$payload6 === void 0 ? void 0 : _action$payload6.sereGroup)) === null || _parseData === void 0 ? void 0 : _parseData[0]) !== null && _parseData$ !== void 0 ? _parseData$ : null,
         errorSereGroup: feCore.formatGraphQLError(action.payload)
       });
     case ERROR(ACTION_TYPE.GET_SERE_GROUP):
-      return _objectSpread$3(_objectSpread$3({}, state), {}, {
+      return _objectSpread$4(_objectSpread$4({}, state), {}, {
         fetchingSereGroup: false,
         errorSereGroup: feCore.formatServerError(action.payload)
       });
     case ACTION_TYPE.CLEAR_SERE_GROUP:
-      return _objectSpread$3(_objectSpread$3({}, state), {}, {
+      return _objectSpread$4(_objectSpread$4({}, state), {}, {
         fetchingSereGroup: false,
         fetchedSereGroup: false,
         sereGroup: null,
         errorSereGroup: null
       });
     case REQUEST(ACTION_TYPE.SEARCH_SERE_GROUP_MEMBERS):
-      return _objectSpread$3(_objectSpread$3({}, state), {}, {
+      return _objectSpread$4(_objectSpread$4({}, state), {}, {
         fetchingSereMembers: true,
         fetchedSereMembers: false,
         errorSereMembers: null
       });
     case SUCCESS(ACTION_TYPE.SEARCH_SERE_GROUP_MEMBERS):
-      return _objectSpread$3(_objectSpread$3({}, state), {}, {
+      return _objectSpread$4(_objectSpread$4({}, state), {}, {
         fetchingSereMembers: false,
         fetchedSereMembers: true,
         sereMembers: feCore.parseData((_action$payload7 = action.payload) === null || _action$payload7 === void 0 || (_action$payload7 = _action$payload7.data) === null || _action$payload7 === void 0 ? void 0 : _action$payload7.sereMember),
@@ -486,18 +553,18 @@ function reducer() {
         errorSereMembers: feCore.formatGraphQLError(action.payload)
       });
     case ERROR(ACTION_TYPE.SEARCH_SERE_GROUP_MEMBERS):
-      return _objectSpread$3(_objectSpread$3({}, state), {}, {
+      return _objectSpread$4(_objectSpread$4({}, state), {}, {
         fetchingSereMembers: false,
         errorSereMembers: feCore.formatServerError(action.payload)
       });
     case REQUEST(ACTION_TYPE.SEARCH_SERE_MEMBERS_LIST):
-      return _objectSpread$3(_objectSpread$3({}, state), {}, {
+      return _objectSpread$4(_objectSpread$4({}, state), {}, {
         fetchingSereMembersList: true,
         fetchedSereMembersList: false,
         errorSereMembersList: null
       });
     case SUCCESS(ACTION_TYPE.SEARCH_SERE_MEMBERS_LIST):
-      return _objectSpread$3(_objectSpread$3({}, state), {}, {
+      return _objectSpread$4(_objectSpread$4({}, state), {}, {
         fetchingSereMembersList: false,
         fetchedSereMembersList: true,
         sereMembersList: feCore.parseData((_action$payload0 = action.payload) === null || _action$payload0 === void 0 || (_action$payload0 = _action$payload0.data) === null || _action$payload0 === void 0 ? void 0 : _action$payload0.sereMember),
@@ -506,12 +573,12 @@ function reducer() {
         errorSereMembersList: feCore.formatGraphQLError(action.payload)
       });
     case ERROR(ACTION_TYPE.SEARCH_SERE_MEMBERS_LIST):
-      return _objectSpread$3(_objectSpread$3({}, state), {}, {
+      return _objectSpread$4(_objectSpread$4({}, state), {}, {
         fetchingSereMembersList: false,
         errorSereMembersList: feCore.formatServerError(action.payload)
       });
     case REQUEST(ACTION_TYPE.SEARCH_SERE_ACTIVITIES):
-      return _objectSpread$3(_objectSpread$3({}, state), {}, {
+      return _objectSpread$4(_objectSpread$4({}, state), {}, {
         fetchingSereActivities: true,
         fetchedSereActivities: false,
         errorSereActivities: null
@@ -521,7 +588,7 @@ function reducer() {
         var _action$payload11, _connection$totalCoun;
         const connection = (_action$payload11 = action.payload) === null || _action$payload11 === void 0 || (_action$payload11 = _action$payload11.data) === null || _action$payload11 === void 0 ? void 0 : _action$payload11.sereActivity;
         const activities = feCore.parseData(connection);
-        return _objectSpread$3(_objectSpread$3({}, state), {}, {
+        return _objectSpread$4(_objectSpread$4({}, state), {}, {
           fetchingSereActivities: false,
           fetchedSereActivities: true,
           sereActivities: activities,
@@ -531,14 +598,14 @@ function reducer() {
         });
       }
     case ERROR(ACTION_TYPE.SEARCH_SERE_ACTIVITIES):
-      return _objectSpread$3(_objectSpread$3({}, state), {}, {
+      return _objectSpread$4(_objectSpread$4({}, state), {}, {
         fetchingSereActivities: false,
         errorSereActivities: feCore.formatServerError(action.payload)
       });
     case REQUEST(ACTION_TYPE.MUTATION):
       return feCore.dispatchMutationReq(state, action);
     case ERROR(ACTION_TYPE.MUTATION):
-      return _objectSpread$3(_objectSpread$3({}, feCore.dispatchMutationErr(state, action)), {}, {
+      return _objectSpread$4(_objectSpread$4({}, feCore.dispatchMutationErr(state, action)), {}, {
         submittingMutation: false
       });
     case SUCCESS(ACTION_TYPE.CREATE_SERE_ACTIVITY):
@@ -676,6 +743,7 @@ const RIGHT_SERE_ACTIVITY_SEARCH = 124006;
 const RIGHT_SERE_ACTIVITY_CREATE = 124007;
 const RIGHT_SERE_ACTIVITY_UPDATE = 124008;
 const RIGHT_SERE_ACTIVITY_DELETE = 124009;
+const RIGHT_SERE_PRESENCE_VALIDATE = 124010;
 const ROUTE_SERE_GROUPS = 'productive-inclusion/sere-groups';
 const ROUTE_SERE_GROUP = 'productive-inclusion/sere-groups/group';
 const ROUTE_SERE_MEMBERS = 'productive-inclusion/members';
@@ -702,7 +770,7 @@ const ACTIVITY_STATUS_COMPLETED = 'COMPLETED';
 const ACTIVITY_STATUS_CANCELLED = 'CANCELLED';
 const ACTIVITY_STATUSES = [ACTIVITY_STATUS_PLANNED, ACTIVITY_STATUS_IN_PROGRESS, ACTIVITY_STATUS_COMPLETED, ACTIVITY_STATUS_CANCELLED];
 
-const useStyles$3 = styles$4.makeStyles(theme => ({
+const useStyles$5 = styles$4.makeStyles(theme => ({
   card: {
     padding: theme.spacing(2),
     height: '100%'
@@ -730,7 +798,7 @@ function SereGroupsSummaryCards(_ref) {
     fetchingSereGroupsSummary = _ref.fetchingSereGroupsSummary,
     sereGroupsSummary = _ref.sereGroupsSummary,
     sereGroupsTotalCount = _ref.sereGroupsTotalCount;
-  const classes = useStyles$3();
+  const classes = useStyles$5();
   const totalGroups = (_sereGroupsSummary$to = sereGroupsSummary === null || sereGroupsSummary === void 0 ? void 0 : sereGroupsSummary.totalGroups) !== null && _sereGroupsSummary$to !== void 0 ? _sereGroupsSummary$to : sereGroupsTotalCount;
   const totalMembers = sereGroupsSummary === null || sereGroupsSummary === void 0 ? void 0 : sereGroupsSummary.totalMembers;
   const byPrefecture = (_sereGroupsSummary$gr = sereGroupsSummary === null || sereGroupsSummary === void 0 ? void 0 : sereGroupsSummary.groupsByPrefecture) !== null && _sereGroupsSummary$gr !== void 0 ? _sereGroupsSummary$gr : [];
@@ -797,7 +865,7 @@ function SereGroupsSummaryCards(_ref) {
     variant: "body2"
   }, /*#__PURE__*/React__default["default"].createElement("strong", null, row.count))))))));
 }
-const mapStateToProps$6 = state => {
+const mapStateToProps$7 = state => {
   var _state$productiveIncl, _state$productiveIncl2, _state$productiveIncl3, _state$productiveIncl4;
   return {
     fetchingSereGroupsSummary: (_state$productiveIncl = state.productiveInclusion) === null || _state$productiveIncl === void 0 ? void 0 : _state$productiveIncl.fetchingSereGroupsSummary,
@@ -805,19 +873,19 @@ const mapStateToProps$6 = state => {
     sereGroupsTotalCount: (_state$productiveIncl3 = (_state$productiveIncl4 = state.productiveInclusion) === null || _state$productiveIncl4 === void 0 ? void 0 : _state$productiveIncl4.sereGroupsTotalCount) !== null && _state$productiveIncl3 !== void 0 ? _state$productiveIncl3 : 0
   };
 };
-var SereGroupsSummaryCards$1 = reactIntl.injectIntl(reactRedux.connect(mapStateToProps$6)(SereGroupsSummaryCards));
+var SereGroupsSummaryCards$1 = reactIntl.injectIntl(reactRedux.connect(mapStateToProps$7)(SereGroupsSummaryCards));
 
-/** Retire les paramètres de pagination / tri pour réutiliser les filtres métier côté récap. */
+/** Retire pagination / tri / isDeleted (non exposé sur sereGroupSummary). */
 function stripSereGroupPaginationParams(params) {
   if (!Array.isArray(params)) return [];
-  return params.filter(p => !/^first:/.test(p) && !/^after:/.test(p) && !/^before:/.test(p) && !/^orderBy:/.test(p));
+  return params.filter(p => !/^first:/.test(p) && !/^after:/.test(p) && !/^before:/.test(p) && !/^orderBy:/.test(p) && !/^isDeleted:/.test(p));
 }
 function escapeGqlString(value) {
   if (value == null) return '';
   return String(value).replace(/\\/g, '\\\\').replace(/"/g, '\\"');
 }
 
-const useStyles$2 = styles$4.makeStyles(theme => ({
+const useStyles$4 = styles$4.makeStyles(theme => ({
   form: {
     padding: '0 0 10px 0',
     width: '100%'
@@ -839,7 +907,7 @@ function SereGroupFilter(_ref) {
   _ref.intl;
     let filters = _ref.filters,
     onChangeFilters = _ref.onChangeFilters;
-  const classes = useStyles$2();
+  const classes = useStyles$4();
   const dateUpdatedFrom = filterValue$1(filters, 'dateUpdatedFrom');
   const pushFilter = (id, value, filter) => {
     onChangeFilters([{
@@ -1007,6 +1075,7 @@ function SereGroupSearcher(_ref) {
   };
   const filtersToQueryParams = state => {
     const params = Object.keys(state.filters).filter(key => !!state.filters[key].filter).map(key => state.filters[key].filter);
+    params.push('isDeleted: false');
     params.push("first: ".concat(state.pageSize));
     if (state.afterCursor) params.push("after: \"".concat(state.afterCursor, "\""));
     if (state.beforeCursor) params.push("before: \"".concat(state.beforeCursor, "\""));
@@ -1049,7 +1118,7 @@ function SereGroupSearcher(_ref) {
     withSelection: "none"
   }));
 }
-const mapStateToProps$5 = state => {
+const mapStateToProps$6 = state => {
   var _state$core$user$i_us, _state$core, _state$productiveIncl, _state$productiveIncl2, _state$productiveIncl3, _state$productiveIncl4, _state$productiveIncl5, _state$productiveIncl6;
   return {
     rights: (_state$core$user$i_us = (_state$core = state.core) === null || _state$core === void 0 || (_state$core = _state$core.user) === null || _state$core === void 0 || (_state$core = _state$core.i_user) === null || _state$core === void 0 ? void 0 : _state$core.rights) !== null && _state$core$user$i_us !== void 0 ? _state$core$user$i_us : [],
@@ -1065,7 +1134,7 @@ const mapDispatchToProps$4 = dispatch => redux.bindActionCreators({
   fetchSereGroups,
   fetchSereGroupsSummary
 }, dispatch);
-var SereGroupSearcher$1 = reactIntl.injectIntl(feCore.withModulesManager(feCore.withHistory(reactRedux.connect(mapStateToProps$5, mapDispatchToProps$4)(SereGroupSearcher))));
+var SereGroupSearcher$1 = reactIntl.injectIntl(feCore.withModulesManager(feCore.withHistory(reactRedux.connect(mapStateToProps$6, mapDispatchToProps$4)(SereGroupSearcher))));
 
 const styles$3 = theme => ({
   page: theme.page
@@ -1142,7 +1211,7 @@ function SereMembersPanel(_ref) {
     withSelection: "none"
   });
 }
-const mapStateToProps$4 = state => {
+const mapStateToProps$5 = state => {
   var _state$core$user$i_us, _state$core, _state$productiveIncl, _state$productiveIncl2, _state$productiveIncl3, _state$productiveIncl4, _state$productiveIncl5, _state$productiveIncl6;
   return {
     rights: (_state$core$user$i_us = (_state$core = state.core) === null || _state$core === void 0 || (_state$core = _state$core.user) === null || _state$core === void 0 || (_state$core = _state$core.i_user) === null || _state$core === void 0 ? void 0 : _state$core.rights) !== null && _state$core$user$i_us !== void 0 ? _state$core$user$i_us : [],
@@ -1157,10 +1226,10 @@ const mapStateToProps$4 = state => {
 const mapDispatchToProps$3 = dispatch => redux.bindActionCreators({
   fetchSereGroupMembers
 }, dispatch);
-var SereMembersPanel$1 = reactIntl.injectIntl(reactRedux.connect(mapStateToProps$4, mapDispatchToProps$3)(SereMembersPanel));
+var SereMembersPanel$1 = reactIntl.injectIntl(reactRedux.connect(mapStateToProps$5, mapDispatchToProps$3)(SereMembersPanel));
 
-function ownKeys$2(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function _objectSpread$2(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys$2(Object(t), !0).forEach(function (r) { _defineProperty__default["default"](e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys$2(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function ownKeys$3(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread$3(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys$3(Object(t), !0).forEach(function (r) { _defineProperty__default["default"](e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys$3(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 function normalizeActivityForDialog(activity) {
   var _activity$status, _activity$activityDat;
   if (!activity) return {
@@ -1171,7 +1240,7 @@ function normalizeActivityForDialog(activity) {
   const status = ACTIVITY_STATUSES.includes(statusUpper) ? statusUpper : ACTIVITY_STATUS_PLANNED;
   const rawDate = (_activity$activityDat = activity.activityDate) !== null && _activity$activityDat !== void 0 ? _activity$activityDat : activity.activity_date;
   const activityDate = rawDate ? String(rawDate).split('T')[0] : '';
-  return _objectSpread$2(_objectSpread$2({}, activity), {}, {
+  return _objectSpread$3(_objectSpread$3({}, activity), {}, {
     status,
     activityDate
   });
@@ -1193,7 +1262,7 @@ function SereActivityDialog(_ref) {
     }
   }, [activity, open]);
   const updateField = (field, value) => {
-    setEditedActivity(current => _objectSpread$2(_objectSpread$2({}, current), {}, {
+    setEditedActivity(current => _objectSpread$3(_objectSpread$3({}, current), {}, {
       [field]: value
     }));
   };
@@ -1260,8 +1329,8 @@ function SereActivityDialog(_ref) {
 }
 var SereActivityDialog$1 = reactIntl.injectIntl(SereActivityDialog);
 
-function ownKeys$1(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function _objectSpread$1(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys$1(Object(t), !0).forEach(function (r) { _defineProperty__default["default"](e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys$1(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function ownKeys$2(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread$2(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys$2(Object(t), !0).forEach(function (r) { _defineProperty__default["default"](e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys$2(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 function SereActivitiesPanel(_ref) {
   let intl = _ref.intl,
     modulesManager = _ref.modulesManager,
@@ -1294,7 +1363,7 @@ function SereActivitiesPanel(_ref) {
   const activityToDeleteRef = React.useRef(null);
   const prevSubmittingMutationRef = React.useRef();
   const fetch = params => fetchSereActivities(["groupId: \"".concat(groupId, "\""), ...params]);
-  const filtersToQueryParams = state => ["first: ".concat(Math.min(state.pageSize, 50))];
+  const filtersToQueryParams = state => ['isDeleted: false', "first: ".concat(Math.min(state.pageSize, 50))];
   React.useEffect(() => {
     var _activity$id;
     if (confirmed !== true || !activityToDeleteRef.current) {
@@ -1331,7 +1400,7 @@ function SereActivitiesPanel(_ref) {
     setDialogOpen(true);
   };
   const openEditDialog = activity => {
-    setEditedActivity(_objectSpread$1(_objectSpread$1({}, activity), {}, {
+    setEditedActivity(_objectSpread$2(_objectSpread$2({}, activity), {}, {
       groupId
     }));
     setDialogOpen(true);
@@ -1415,7 +1484,7 @@ function SereActivitiesPanel(_ref) {
     withSelection: "none"
   }));
 }
-const mapStateToProps$3 = state => {
+const mapStateToProps$4 = state => {
   var _state$core$user$i_us, _state$core, _state$core2, _state$productiveIncl, _state$productiveIncl2, _state$productiveIncl3, _state$productiveIncl4, _state$productiveIncl5, _state$productiveIncl6, _state$productiveIncl7, _state$productiveIncl8, _state$productiveIncl9;
   return {
     rights: (_state$core$user$i_us = (_state$core = state.core) === null || _state$core === void 0 || (_state$core = _state$core.user) === null || _state$core === void 0 || (_state$core = _state$core.i_user) === null || _state$core === void 0 ? void 0 : _state$core.rights) !== null && _state$core$user$i_us !== void 0 ? _state$core$user$i_us : [],
@@ -1439,7 +1508,7 @@ const mapDispatchToProps$2 = dispatch => redux.bindActionCreators({
   clearConfirm: feCore.clearConfirm,
   journalize: feCore.journalize
 }, dispatch);
-var SereActivitiesPanel$1 = reactIntl.injectIntl(feCore.withModulesManager(reactRedux.connect(mapStateToProps$3, mapDispatchToProps$2)(SereActivitiesPanel)));
+var SereActivitiesPanel$1 = reactIntl.injectIntl(feCore.withModulesManager(reactRedux.connect(mapStateToProps$4, mapDispatchToProps$2)(SereActivitiesPanel)));
 
 /**
  * Renders administrative levels from `locationHierarchy` JSON with business labels
@@ -1615,7 +1684,7 @@ function SereGroupPage(_ref) {
     groupId: feCore.decodeId(sereGroup.id)
   })));
 }
-const mapStateToProps$2 = (state, props) => {
+const mapStateToProps$3 = (state, props) => {
   var _state$core$user$i_us, _state$core, _props$match, _state$productiveIncl, _state$productiveIncl2, _state$productiveIncl3, _state$productiveIncl4;
   return {
     rights: (_state$core$user$i_us = (_state$core = state.core) === null || _state$core === void 0 || (_state$core = _state$core.user) === null || _state$core === void 0 || (_state$core = _state$core.i_user) === null || _state$core === void 0 ? void 0 : _state$core.rights) !== null && _state$core$user$i_us !== void 0 ? _state$core$user$i_us : [],
@@ -1630,9 +1699,9 @@ const mapDispatchToProps$1 = dispatch => redux.bindActionCreators({
   fetchSereGroup,
   clearSereGroup
 }, dispatch);
-var SereGroupPage$1 = reactIntl.injectIntl(feCore.withModulesManager(feCore.withHistory(styles$5.withTheme(styles$5.withStyles(styles$1)(reactRedux.connect(mapStateToProps$2, mapDispatchToProps$1)(SereGroupPage))))));
+var SereGroupPage$1 = reactIntl.injectIntl(feCore.withModulesManager(feCore.withHistory(styles$5.withTheme(styles$5.withStyles(styles$1)(reactRedux.connect(mapStateToProps$3, mapDispatchToProps$1)(SereGroupPage))))));
 
-const useStyles$1 = styles$4.makeStyles(theme => ({
+const useStyles$3 = styles$4.makeStyles(theme => ({
   form: {
     padding: '0 0 10px 0',
     width: '100%'
@@ -1654,7 +1723,7 @@ function SereMemberListFilter(_ref) {
   _ref.intl;
     let filters = _ref.filters,
     onChangeFilters = _ref.onChangeFilters;
-  const classes = useStyles$1();
+  const classes = useStyles$3();
   const pushFilter = (id, value, filter) => {
     onChangeFilters([{
       id,
@@ -1832,7 +1901,7 @@ function SereMemberListFilter(_ref) {
 }
 var SereMemberListFilter$1 = reactIntl.injectIntl(SereMemberListFilter);
 
-const useStyles = styles$4.makeStyles(theme => ({
+const useStyles$2 = styles$4.makeStyles(theme => ({
   active: {
     backgroundColor: theme.palette.success.light,
     color: theme.palette.success.contrastText
@@ -1867,7 +1936,7 @@ function statusClass(status, classes) {
 function SereMemberStatusChip(_ref) {
   let status = _ref.status,
     label = _ref.label;
-  const classes = useStyles();
+  const classes = useStyles$2();
   if (!label && !status) return '—';
   return /*#__PURE__*/React__default["default"].createElement(core.Chip, {
     size: "small",
@@ -1875,6 +1944,143 @@ function SereMemberStatusChip(_ref) {
     className: statusClass(status, classes)
   });
 }
+
+function ownKeys$1(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread$1(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys$1(Object(t), !0).forEach(function (r) { _defineProperty__default["default"](e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys$1(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+const VALIDATE_PRESENCES_URL = "".concat(feCore.baseApiUrl, "/productive_inclusion/validate_presences/");
+const useStyles$1 = styles$4.makeStyles(theme => ({
+  toolbar: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+    marginBottom: theme.spacing(2)
+  }
+}));
+function t(intl, key) {
+  return feCore.formatMessage(intl, MODULE_NAME, key);
+}
+function SereValidatePresencesButton(_ref) {
+  let intl = _ref.intl,
+    rights = _ref.rights;
+  const classes = useStyles$1();
+  const _useState = React.useState(false),
+    _useState2 = _slicedToArray__default["default"](_useState, 2),
+    confirmOpen = _useState2[0],
+    setConfirmOpen = _useState2[1];
+  const _useState3 = React.useState(false),
+    _useState4 = _slicedToArray__default["default"](_useState3, 2),
+    loading = _useState4[0],
+    setLoading = _useState4[1];
+  const _useState5 = React.useState(null),
+    _useState6 = _slicedToArray__default["default"](_useState5, 2),
+    inlineError = _useState6[0],
+    setInlineError = _useState6[1];
+  const _useState7 = React.useState(null),
+    _useState8 = _slicedToArray__default["default"](_useState7, 2),
+    result = _useState8[0],
+    setResult = _useState8[1];
+  if (!rights.includes(RIGHT_SERE_PRESENCE_VALIDATE)) {
+    return null;
+  }
+  const closeConfirm = () => {
+    if (loading) return;
+    setConfirmOpen(false);
+  };
+  const onConfirm = async () => {
+    setLoading(true);
+    setInlineError(null);
+    try {
+      var _payload$members_tota, _payload$active_count, _payload$inactive_cou, _payload$members_stat;
+      const headers = _objectSpread$1({}, feCore.apiHeaders || {});
+      delete headers['Content-Type'];
+      delete headers['content-type'];
+      const response = await fetch(VALIDATE_PRESENCES_URL, {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: _objectSpread$1(_objectSpread$1({}, headers), {}, {
+          Accept: 'application/json'
+        })
+      });
+      const payload = await response.json().catch(() => ({}));
+      if (response.status === 403) {
+        setLoading(false);
+        setConfirmOpen(false);
+        setInlineError(t(intl, 'validatePresences.forbidden'));
+        return;
+      }
+      if (!response.ok || payload.success === false) {
+        const message = payload.error || payload.detail || t(intl, 'validatePresences.failed');
+        setLoading(false);
+        setConfirmOpen(false);
+        setInlineError(typeof message === 'string' ? message : JSON.stringify(message));
+        return;
+      }
+      setLoading(false);
+      setConfirmOpen(false);
+      setResult({
+        membersTotal: (_payload$members_tota = payload.members_total) !== null && _payload$members_tota !== void 0 ? _payload$members_tota : 0,
+        activeCount: (_payload$active_count = payload.active_count) !== null && _payload$active_count !== void 0 ? _payload$active_count : 0,
+        inactiveCount: (_payload$inactive_cou = payload.inactive_count) !== null && _payload$inactive_cou !== void 0 ? _payload$inactive_cou : 0,
+        membersStatusUpdated: (_payload$members_stat = payload.members_status_updated) !== null && _payload$members_stat !== void 0 ? _payload$members_stat : 0,
+        benefitPlanCode: payload.benefit_plan_code || null,
+        taskId: payload.task_id || null
+      });
+    } catch (error) {
+      setLoading(false);
+      setConfirmOpen(false);
+      setInlineError((error === null || error === void 0 ? void 0 : error.message) || t(intl, 'validatePresences.failed'));
+    }
+  };
+  return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement(core.Box, {
+    className: classes.toolbar
+  }, /*#__PURE__*/React__default["default"].createElement(core.Button, {
+    variant: "contained",
+    color: "primary",
+    onClick: () => {
+      setInlineError(null);
+      setConfirmOpen(true);
+    },
+    disabled: loading
+  }, t(intl, 'validatePresences.btn'))), inlineError && /*#__PURE__*/React__default["default"].createElement(core.Box, {
+    mb: 2
+  }, /*#__PURE__*/React__default["default"].createElement(lab.Alert, {
+    severity: "error"
+  }, inlineError)), /*#__PURE__*/React__default["default"].createElement(core.Dialog, {
+    open: confirmOpen,
+    onClose: closeConfirm,
+    fullWidth: true,
+    maxWidth: "sm"
+  }, /*#__PURE__*/React__default["default"].createElement(core.DialogTitle, null, t(intl, 'validatePresences.confirmTitle')), /*#__PURE__*/React__default["default"].createElement(core.DialogContent, null, /*#__PURE__*/React__default["default"].createElement(lab.Alert, {
+    severity: "info"
+  }, t(intl, 'validatePresences.confirmMessage'))), /*#__PURE__*/React__default["default"].createElement(core.DialogActions, null, /*#__PURE__*/React__default["default"].createElement(core.Button, {
+    onClick: closeConfirm,
+    disabled: loading
+  }, t(intl, 'validatePresences.cancel')), /*#__PURE__*/React__default["default"].createElement(core.Button, {
+    onClick: onConfirm,
+    variant: "contained",
+    color: "primary",
+    disabled: loading
+  }, loading ? t(intl, 'validatePresences.inProgress') : t(intl, 'validatePresences.confirm')))), /*#__PURE__*/React__default["default"].createElement(core.Dialog, {
+    open: !!result,
+    onClose: () => setResult(null),
+    fullWidth: true,
+    maxWidth: "sm"
+  }, /*#__PURE__*/React__default["default"].createElement(core.DialogTitle, null, t(intl, 'validatePresences.confirmTitle')), /*#__PURE__*/React__default["default"].createElement(core.DialogContent, null, /*#__PURE__*/React__default["default"].createElement(core.Typography, {
+    gutterBottom: true
+  }, t(intl, 'validatePresences.success')), result && /*#__PURE__*/React__default["default"].createElement("ul", null, /*#__PURE__*/React__default["default"].createElement("li", null, t(intl, 'validatePresences.membersTotal'), ":", ' ', result.membersTotal), /*#__PURE__*/React__default["default"].createElement("li", null, t(intl, 'validatePresences.activeCount'), ":", ' ', result.activeCount), /*#__PURE__*/React__default["default"].createElement("li", null, t(intl, 'validatePresences.inactiveCount'), ":", ' ', result.inactiveCount), /*#__PURE__*/React__default["default"].createElement("li", null, t(intl, 'validatePresences.statusUpdated'), ":", ' ', result.membersStatusUpdated), result.benefitPlanCode && /*#__PURE__*/React__default["default"].createElement("li", null, t(intl, 'validatePresences.benefitPlan'), ":", ' ', result.benefitPlanCode), result.taskId && /*#__PURE__*/React__default["default"].createElement("li", null, t(intl, 'validatePresences.taskId'), ":", ' ', result.taskId)), /*#__PURE__*/React__default["default"].createElement(lab.Alert, {
+    severity: "info"
+  }, t(intl, 'validatePresences.taskHint'))), /*#__PURE__*/React__default["default"].createElement(core.DialogActions, null, /*#__PURE__*/React__default["default"].createElement(core.Button, {
+    onClick: () => setResult(null),
+    variant: "contained",
+    color: "primary"
+  }, t(intl, 'validatePresences.ok')))));
+}
+const mapStateToProps$2 = state => {
+  var _state$core$user$i_us, _state$core;
+  return {
+    rights: (_state$core$user$i_us = (_state$core = state.core) === null || _state$core === void 0 || (_state$core = _state$core.user) === null || _state$core === void 0 || (_state$core = _state$core.i_user) === null || _state$core === void 0 ? void 0 : _state$core.rights) !== null && _state$core$user$i_us !== void 0 ? _state$core$user$i_us : []
+  };
+};
+var SereValidatePresencesButton$1 = reactIntl.injectIntl(reactRedux.connect(mapStateToProps$2)(SereValidatePresencesButton));
 
 /** Même découpage que la liste SERE (clés JSON openIMIS). */
 const MEMBER_LOCATION_JSON_KEYS = {
@@ -2008,7 +2214,7 @@ function SereMemberListSearcher(_ref) {
   if (!rights.includes(RIGHT_SERE_MEMBER_SEARCH)) {
     return feCore.formatMessage(intl, MODULE_NAME, 'members.noRights');
   }
-  return /*#__PURE__*/React__default["default"].createElement(feCore.Searcher, {
+  return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement(SereValidatePresencesButton$1, null), /*#__PURE__*/React__default["default"].createElement(feCore.Searcher, {
     module: MODULE_NAME,
     cacheFiltersKey: "sereMembersListPageFiltersCache",
     fetch: fetch,
@@ -2031,7 +2237,7 @@ function SereMemberListSearcher(_ref) {
     rowsPerPageOptions: ROWS_PER_PAGE_OPTIONS,
     defaultPageSize: SERE_MEMBERS_DEFAULT_PAGE_SIZE,
     withSelection: "none"
-  });
+  }));
 }
 const mapStateToProps$1 = state => {
   var _state$core$user$i_us, _state$core, _state$productiveIncl, _state$productiveIncl2, _state$productiveIncl3, _state$productiveIncl4, _state$productiveIncl5, _state$productiveIncl6, _state$productiveIncl7;
@@ -2099,10 +2305,138 @@ const mapStateToProps = state => {
 };
 var ProductiveInclusionMainMenu$1 = reactIntl.injectIntl(feCore.withModulesManager(reactRedux.connect(mapStateToProps)(ProductiveInclusionMainMenu)));
 
+const useStyles = styles$4.makeStyles(theme => ({
+  sectionTitle: {
+    fontWeight: 600,
+    marginBottom: theme.spacing(1)
+  },
+  hint: {
+    marginBottom: theme.spacing(1.5)
+  },
+  row: {
+    display: 'flex',
+    padding: '6px 0',
+    borderBottom: '1px solid #eee'
+  },
+  rowLabel: {
+    flex: '0 0 48%',
+    color: '#666',
+    paddingRight: 12
+  },
+  rowValue: {
+    flex: 1,
+    fontWeight: 500,
+    wordBreak: 'break-word'
+  },
+  highlight: {
+    fontWeight: 700
+  }
+}));
+function pickData(incomingData) {
+  if (!incomingData || typeof incomingData !== 'object') return {};
+  if (incomingData.incoming_data && typeof incomingData.incoming_data === 'object') {
+    return incomingData.incoming_data;
+  }
+  return incomingData;
+}
+function SereSubventionTaskRecap(_ref) {
+  var _data$to_keep_active_, _data$to_suspend_coun;
+  let incomingData = _ref.incomingData;
+  const classes = useStyles();
+  const modulesManager = feCore.useModulesManager();
+  const _useTranslations = feCore.useTranslations(MODULE_NAME, modulesManager),
+    formatMessage = _useTranslations.formatMessage;
+  const data = pickData(incomingData);
+  const displayValue = value => {
+    if (value === null || value === undefined || value === '') return '—';
+    if (typeof value === 'boolean') {
+      return value ? formatMessage('tasks.subvention.yes') : formatMessage('tasks.subvention.no');
+    }
+    return String(value);
+  };
+  const activeCount = (_data$to_keep_active_ = data.to_keep_active_count) !== null && _data$to_keep_active_ !== void 0 ? _data$to_keep_active_ : data.active_count;
+  const suspendCount = (_data$to_suspend_coun = data.to_suspend_count) !== null && _data$to_suspend_coun !== void 0 ? _data$to_suspend_coun : data.inactive_count;
+  const membersTotal = data.members_total;
+  const planLabel = data.benefit_plan_label || (data.benefit_plan_code ? "".concat(data.benefit_plan_code).concat(data.benefit_plan_name ? " \u2014 ".concat(data.benefit_plan_name) : '') : null);
+  const rows = [{
+    key: 'label',
+    label: formatMessage('tasks.subvention.field.label'),
+    value: data.label
+  }, {
+    key: 'benefitPlan',
+    label: formatMessage('tasks.subvention.field.benefitPlan'),
+    value: planLabel
+  }, {
+    key: 'thresholds',
+    label: formatMessage('tasks.subvention.field.thresholds'),
+    value: data.presence_count_min != null && data.presence_count_max != null ? "".concat(data.presence_count_min, " \u2013 ").concat(data.presence_count_max) : null
+  }, {
+    key: 'membersTotal',
+    label: formatMessage('tasks.subvention.field.membersTotal'),
+    value: membersTotal,
+    highlight: true
+  }, {
+    key: 'active',
+    label: formatMessage('tasks.subvention.field.activeCount'),
+    value: activeCount,
+    highlight: true
+  }, {
+    key: 'suspend',
+    label: formatMessage('tasks.subvention.field.toSuspendCount'),
+    value: suspendCount,
+    highlight: true
+  }, {
+    key: 'statusUpdated',
+    label: formatMessage('tasks.subvention.field.statusUpdated'),
+    value: data.members_status_updated
+  }, {
+    key: 'syncSp',
+    label: formatMessage('tasks.subvention.field.syncSocialProtection'),
+    value: data.sync_social_protection
+  }, {
+    key: 'batchId',
+    label: formatMessage('tasks.subvention.field.batchId'),
+    value: data.batch_id
+  }].filter(row => row.value !== null && row.value !== undefined && row.value !== '');
+  if (rows.length === 0) {
+    return /*#__PURE__*/React__default["default"].createElement(core.Typography, {
+      variant: "body2",
+      color: "textSecondary"
+    }, formatMessage('tasks.subvention.noData'));
+  }
+  return /*#__PURE__*/React__default["default"].createElement(core.Box, null, /*#__PURE__*/React__default["default"].createElement(core.Typography, {
+    className: classes.sectionTitle
+  }, formatMessage('tasks.subvention.recapTitle')), /*#__PURE__*/React__default["default"].createElement(core.Typography, {
+    variant: "body2",
+    color: "textSecondary",
+    className: classes.hint
+  }, formatMessage('tasks.subvention.recapHint')), rows.map(_ref2 => {
+    let key = _ref2.key,
+      label = _ref2.label,
+      value = _ref2.value,
+      highlight = _ref2.highlight;
+    return /*#__PURE__*/React__default["default"].createElement("div", {
+      key: key,
+      className: classes.row
+    }, /*#__PURE__*/React__default["default"].createElement(core.Typography, {
+      className: classes.rowLabel,
+      variant: "body2"
+    }, label), /*#__PURE__*/React__default["default"].createElement(core.Typography, {
+      className: "".concat(classes.rowValue).concat(highlight ? " ".concat(classes.highlight) : ''),
+      variant: "body2"
+    }, displayValue(value)));
+  }));
+}
+
+const SereSubventionTaskTableHeaders = () => ['Récapitulatif subvention'];
+const SereSubventionTaskItemFormatters = () => [incomingData => /*#__PURE__*/React__default["default"].createElement(SereSubventionTaskRecap, {
+  incomingData: incomingData
+})];
+
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty__default["default"](e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 
-/** Libellés écran Administration → Rôles (IDs 124001–124009, backend migration 0008). */
+/** Libellés écran Administration → Rôles (IDs 124001–124010). */
 const PRODUCTIVE_INCLUSION_MODULE_RIGHTS = [{
   id: RIGHT_SERE_GROUP_SEARCH,
   name: 'productiveInclusion.right.sereGroupSearch'
@@ -2130,6 +2464,9 @@ const PRODUCTIVE_INCLUSION_MODULE_RIGHTS = [{
 }, {
   id: RIGHT_SERE_ACTIVITY_DELETE,
   name: 'productiveInclusion.right.sereActivityDelete'
+}, {
+  id: RIGHT_SERE_PRESENCE_VALIDATE,
+  name: 'productiveInclusion.right.serePresenceValidate'
 }];
 const DEFAULT_CONFIG = {
   translations: [{
@@ -2156,6 +2493,15 @@ const DEFAULT_CONFIG = {
   'core.MainMenu': [{
     name: 'ProductiveInclusionMainMenu',
     component: ProductiveInclusionMainMenu$1
+  }],
+  'tasksManagement.tasks': [{
+    text: /*#__PURE__*/React__default["default"].createElement(feCore.FormattedMessage, {
+      module: "productiveInclusion",
+      id: "tasks.subvention.title"
+    }),
+    tableHeaders: SereSubventionTaskTableHeaders,
+    itemFormatters: SereSubventionTaskItemFormatters,
+    taskSource: ['subvention_productif']
   }],
   refs: [{
     key: 'productiveInclusion.route.sereGroups',

@@ -1,3 +1,5 @@
+import React from 'react';
+import { FormattedMessage } from '@openimis/fe-core';
 import messagesEn from './translations/en.json';
 import messagesFr from './translations/fr.json';
 import reducer from './reducer';
@@ -5,6 +7,10 @@ import SereGroupsPage from './pages/SereGroupsPage';
 import SereGroupPage from './pages/SereGroupPage';
 import SereMembersPage from './pages/SereMembersPage';
 import ProductiveInclusionMainMenu from './menus/ProductiveInclusionMainMenu';
+import {
+  SereSubventionTaskItemFormatters,
+  SereSubventionTaskTableHeaders,
+} from './components/tasks/SereSubventionTasks';
 import {
   ROUTE_SERE_GROUP,
   ROUTE_SERE_GROUPS,
@@ -18,9 +24,10 @@ import {
   RIGHT_SERE_GROUP_CREATE,
   RIGHT_SERE_GROUP_UPDATE,
   RIGHT_SERE_GROUP_DELETE,
+  RIGHT_SERE_PRESENCE_VALIDATE,
 } from './constants';
 
-/** Libellés écran Administration → Rôles (IDs 124001–124009, backend migration 0008). */
+/** Libellés écran Administration → Rôles (IDs 124001–124010). */
 const PRODUCTIVE_INCLUSION_MODULE_RIGHTS = [
   { id: RIGHT_SERE_GROUP_SEARCH, name: 'productiveInclusion.right.sereGroupSearch' },
   { id: RIGHT_SERE_GROUP_CREATE, name: 'productiveInclusion.right.sereGroupCreate' },
@@ -31,6 +38,7 @@ const PRODUCTIVE_INCLUSION_MODULE_RIGHTS = [
   { id: RIGHT_SERE_ACTIVITY_CREATE, name: 'productiveInclusion.right.sereActivityCreate' },
   { id: RIGHT_SERE_ACTIVITY_UPDATE, name: 'productiveInclusion.right.sereActivityUpdate' },
   { id: RIGHT_SERE_ACTIVITY_DELETE, name: 'productiveInclusion.right.sereActivityDelete' },
+  { id: RIGHT_SERE_PRESENCE_VALIDATE, name: 'productiveInclusion.right.serePresenceValidate' },
 ];
 
 const DEFAULT_CONFIG = {
@@ -45,6 +53,12 @@ const DEFAULT_CONFIG = {
     { path: ROUTE_SERE_MEMBERS, component: SereMembersPage },
   ],
   'core.MainMenu': [{ name: 'ProductiveInclusionMainMenu', component: ProductiveInclusionMainMenu }],
+  'tasksManagement.tasks': [{
+    text: <FormattedMessage module="productiveInclusion" id="tasks.subvention.title" />,
+    tableHeaders: SereSubventionTaskTableHeaders,
+    itemFormatters: SereSubventionTaskItemFormatters,
+    taskSource: ['subvention_productif'],
+  }],
   refs: [
     { key: 'productiveInclusion.route.sereGroups', ref: ROUTE_SERE_GROUPS },
     { key: 'productiveInclusion.route.sereGroup', ref: ROUTE_SERE_GROUP },

@@ -21,6 +21,7 @@ import {
 } from '../constants';
 import SereMemberListFilter from './SereMemberListFilter';
 import SereMemberStatusChip from './SereMemberStatusChip';
+import SereValidatePresencesButton from './SereValidatePresencesButton';
 import {
   displayMemberStatus,
   memberLocationLevel,
@@ -152,27 +153,30 @@ function SereMemberListSearcher({
   }
 
   return (
-    <Searcher
-      module={MODULE_NAME}
-      cacheFiltersKey="sereMembersListPageFiltersCache"
-      fetch={fetch}
-      items={sereMembersList}
-      itemsPageInfo={sereMembersListPageInfo}
-      fetchingItems={fetchingSereMembersList}
-      fetchedItems={fetchedSereMembersList}
-      errorItems={errorSereMembersList}
-      tableTitle={formatMessageWithValues(intl, MODULE_NAME, 'members.pageTitle', {
-        totalCount: sereMembersListTotalCount,
-      })}
-      headers={headers}
-      itemFormatters={itemFormatters}
-      filtersToQueryParams={filtersToQueryParams}
-      FilterPane={SereMemberListFilter}
-      rowIdentifier={(member) => member.uuid ?? member.id}
-      rowsPerPageOptions={ROWS_PER_PAGE_OPTIONS}
-      defaultPageSize={SERE_MEMBERS_DEFAULT_PAGE_SIZE}
-      withSelection="none"
-    />
+    <>
+      <SereValidatePresencesButton />
+      <Searcher
+        module={MODULE_NAME}
+        cacheFiltersKey="sereMembersListPageFiltersCache"
+        fetch={fetch}
+        items={sereMembersList}
+        itemsPageInfo={sereMembersListPageInfo}
+        fetchingItems={fetchingSereMembersList}
+        fetchedItems={fetchedSereMembersList}
+        errorItems={errorSereMembersList}
+        tableTitle={formatMessageWithValues(intl, MODULE_NAME, 'members.pageTitle', {
+          totalCount: sereMembersListTotalCount,
+        })}
+        headers={headers}
+        itemFormatters={itemFormatters}
+        filtersToQueryParams={filtersToQueryParams}
+        FilterPane={SereMemberListFilter}
+        rowIdentifier={(member) => member.uuid ?? member.id}
+        rowsPerPageOptions={ROWS_PER_PAGE_OPTIONS}
+        defaultPageSize={SERE_MEMBERS_DEFAULT_PAGE_SIZE}
+        withSelection="none"
+      />
+    </>
   );
 }
 

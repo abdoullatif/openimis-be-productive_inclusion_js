@@ -65,6 +65,7 @@ function SereGroupSearcher({
       .filter((key) => !!state.filters[key].filter)
       .map((key) => state.filters[key].filter);
 
+    params.push('isDeleted: false');
     params.push(`first: ${state.pageSize}`);
     if (state.afterCursor) params.push(`after: "${state.afterCursor}"`);
     if (state.beforeCursor) params.push(`before: "${state.beforeCursor}"`);
